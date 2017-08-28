@@ -5,7 +5,7 @@ var wsdl = 'http://sira.intecoingenieria.com/SWEstimacionParada.asmx?WSDL';
 var xml2js = require('xml2js');
 var parser = new xml2js.Parser({explicitArray: false});
 
-app.use(express.static('./dist'));
+app.use(express.static('./public'));
 
 app.get('/api/stop/:stopid/panel', function (req, res) {
   soap.createClient(wsdl, function(err, client) {
