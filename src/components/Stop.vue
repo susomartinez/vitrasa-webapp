@@ -29,20 +29,6 @@ export default {
   beforeMount() {
     const url = `api/stop/${this.$route.params.id}/panel`;
     this.msg = this.$route.params.id;
-    this.buses = [
-      {
-        Linea: '4C',
-        Ruta: 'COIA - VAO',
-        minutos: '4',
-        metros: '965',
-      },
-      {
-        Linea: '15A',
-        Ruta: 'COIA - SAMIL',
-        minutos: '10',
-        metros: '2199',
-      },
-    ];
     this.$http.get(url).then((response) => {
       this.buses = response.body;
     });
