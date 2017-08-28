@@ -8,6 +8,8 @@
     "front": "node build/dev-server.js",
     "start": "node app.js",
     "build": "node build/build.js && cp package.json ./dist && cp app.js ./dist",
+    "build-front": "node build/build.js",
+    "build-back": "cp package.json ./dist && cp app.js ./dist",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"
