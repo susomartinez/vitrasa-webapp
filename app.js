@@ -18,8 +18,11 @@ app.get('/api/stop/:stopid/panel', function (req, res) {
         });
       });
   });
-})
+});
 
-app.listen(3000, function () {
-  console.log('Vitrasa app listening on port 3000!');
-})
+var port = normalizePort(process.env.PORT || '3000');
+app.set('port', port);
+
+app.listen(port, function () {
+  console.log('Vitrasa app listening on port ' + port);
+});
