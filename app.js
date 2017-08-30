@@ -13,14 +13,19 @@ app.get('/api/stop/:stopid/panel', function (req, res) {
       client.EstimacionParadaIdParada(args, function(err, result) {
         var xml = result.EstimacionParadaIdParadaResult;
         parser.parseString(xml, function (err, resultjson) {
-          var estimaciones = resultjson.NewDataSet.Estimaciones;
-          res.send(estimaciones);
+          var nextBuses = resultjson.NewDataSet.Estimaciones;
+          if (!nextBuses) {
+            nextBuses = [];
+          }
+          res.send(nextBuses.sort(function (busA, busB) {
+            return (busA.minutos - busB.minutos);
+          }));
         });
       });
   });
 });
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = process.env.PORT || '3000';
 app.set('port', port);
 
 app.listen(port, function () {

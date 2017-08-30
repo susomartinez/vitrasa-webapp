@@ -2,7 +2,7 @@
   <div data-page="projects" class="page">
     <div class="page-content">
       <div class="content-block-title">Nombre de la parada ({{ msg }})</div>
-      <div class="list-block media-list">
+      <div class="list-block media-list" v-if="buses.length > 0">
         <ul>
           <li class="item-content" v-for="bus in buses">
             <div class="item-inner">
@@ -13,6 +13,11 @@
             </div>
           </li>
         </ul>
+      </div>
+      <div class="content-block" v-else>
+        <div class="content-block-inner">
+        <p>Sin servicio en los próximos minutos para esta parada.</p>
+        </div>
       </div>
     </div>
   </div>
